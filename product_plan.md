@@ -1,45 +1,33 @@
-# Dream Diary Capstone
+# LaserKitty Capstone
 
-Users will be able log their dreams in an online journal that also parses each entry for interpretation keywords. I will be making and utilizing and separate API that acts as the dream dictionary. Each interpretation keyword in the dream entry will be highlighted and offer a sentence of its meaning as a hover effect.
+I have one roommate – she is a cat. We live in a microapartment; a cramped studio of 209 sq. ft. Attending Ada takes me away from my home, and her, for a minimum of eight hours a day.
 
-Additional features _may_ include:  
-+ A space to log the interpretations of your dreams
-+ Buttons to share or cross-post your dream and/or interpretation to social media platforms and blogs
-+ Text in your dream entry
-+ Track your mood by journal entry
-+ Submit a voice recording of your dream that's annotated into a written entry
-+ Text reminder to log your dream
-+ Tag dream entries
-
+To keep her brain stimulated and occupied, I'm going to build her a laser toy she can play with—and I can control in the browser—when I'm not home. It will also help me track her activity and log it for review.
 
 # Product Plan
 
 ## Problem Statement
 
+My cat is over-grooming out of boredom. I can't be with her for upwards of eight hours of the day (not including when I'm sleeping). She's a young kitty that need stimulation and activity. There are good laser toys on the market, but they run upwards of $100 and I have the skill set to build my own.
+
 ## Market Research
 
-__Dream Journals__
-+ [Dream Moods](https://play.google.com/store/apps/details?id=com.itgc.dreammoods.ui&hl=en) _(Android logging app)_
-+ [iDream](https://itunes.apple.com/us/app/idream-dream-interpreter-journal/id408076503?mt=8) _(most similar to my proposed project)_
-+ [Dream Diary](https://play.google.com/store/apps/details?id=com.devmys.dreamdiary&hl=en)
-+ [Lucidpedia](http://www.lucidipedia.com/dream-journal/)
-
-__Dream Dictionaries__    
-I plan on utilizing a dream dictionary in my capstone. I'll be scraping the website(s) for its dictionary content and turning the gathered data into an API my web app can access.  
-+ [Dream Moods](www.dreammoods.com/dreamdictionary/) _(top choice)_
-+ [Dream Bible](http://www.dreambible.com/)
-+ [Dream Dictionary](http://www.dreamdictionary.org/) _(not the best interpretations)_
-+ [DreamsCloud](www.dreamscloud.com/dream-dictionary) _(not great for scraping)_
-+ [Amy Cope's Dream Dictionary](http://amycope.com/dream-dictionary/) _(not thorough)_
-+ [Horoscope.com](http://www.horoscope.com/horoscope/resources/dream-dictionary.aspx?part=1) _(pretty good; strangely structured)_
-+ [Dream Dictionary](http://dream.dictionary-dream.info/) _(hit and miss on interpretations)_
-+ [Brilliant Dreams](http://www.brilliantdreams.com/dream-dictionary/dream-dictionary-a.htm)
-
++ [Kittyo](http://kittyo.com/) - $249
+  - Features: treat dispenser, camera, mount, WiFi connected, smartphone app controller, record & share video, speaker, sound announcement
+  - [Kickstarter](https://www.kickstarter.com/projects/kittyo/kittyo-play-with-your-cat-even-when-youre-not-home/description)
++ [Petcube](https://www.kickstarter.com/projects/petcube/petcube-stay-closer-to-your-pet/description) - $199
+  - Features: camera, microphone, WiFi connected, smartphone app controller, share and save HD videos & photos, share access with friends & family
++ [Obi](https://www.kickstarter.com/projects/danprovost/obi-a-smart-laser-toy-for-pets) - $100
+  - Features: smartphone controller (iOS), WiFi connected, automatic/manual modes, sound announcement, customizable behavior
++ [Shru](https://www.kickstarter.com/projects/1046165765/egg-the-intelligent-cat-companion/description) - $79
+  - Features: chirp sounds, erratic movements, USB rechargeable, play modes, USB interface, adjust settings: sound type, volume, play mode, and play duration
++ [Dart Automatic Pet Laser Toy](https://www.thinkgeek.com/product/dcd0/) - ~$27-45
+  - Features: variable speed settings, adjustable timer shut-off, 16 play combinations, 360 deg laser patterns
 
 
 ## User Personas  
 
-I plan on building my web app with accessibility in mind, so most anyone will be able to use it. This app would be most applicable to those who enjoy tracking and interpreting their dreams.
+Pet owners who work full-time or spend a lot of time away from home.
 
 ## Technologies
 
@@ -47,7 +35,7 @@ I plan on building my web app with accessibility in mind, so most anyone will be
 _Minimum of 2_  
 
 + Background/Asynch jobs (e.g. email confirmation)
-+ Ember? Angular? Backbone? (i.e. front-end framework)
++ Johnny-Five: JavaScript Micro-controller Programming Framework
 + Third-party OAuth
 
 ### Advanced Features
@@ -55,4 +43,3 @@ _Minimum of 2_
 
 + Secure Socket Layer (SSL)
 + Internationalization (i18n)
-+ Open Public API
