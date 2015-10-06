@@ -4,6 +4,8 @@ I have one roommate – she is a cat. We live in a microapartment; a cramped stu
 
 To keep her brain stimulated and occupied, I'm going to build her a laser toy she can play with—and I can control in the browser—when I'm not home. It will also help me track her activity and log it for review.
 
+<!-- Possible feature(s): give out codes to let my friends play with my kitty (with restricted times) -->
+
 # Product Plan
 
 ## Problem Statement
@@ -12,6 +14,9 @@ My cat is over-grooming out of boredom. I can't be with her for upwards of eight
 
 ## Market Research
 
++ [iPet Companion](http://ipetcompanion.com/shelters/oregon-humane-society)
+  - remotely watch and play with shelter kitties
+  - Features: live streaming video, capture and share photos, camera control, control multiple toys, chat with players in queue
 + [Kittyo](http://kittyo.com/) - $249
   - Features: treat dispenser, camera, mount, WiFi connected, smartphone app controller, record & share video, speaker, sound announcement
   - [Kickstarter](https://www.kickstarter.com/projects/kittyo/kittyo-play-with-your-cat-even-when-youre-not-home/description)
