@@ -19,7 +19,6 @@
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
-  </body>
 
   <!-- has to be at the bottom??? -->
   <!-- load socket.io-client, exposing a global `io` -->
@@ -31,8 +30,13 @@
     $('form').submit(function(){
       socket.emit('chat message', $('#m').val());
       $('#m').val('');
-      // but why does it need to return false??
+      // `return false` so it doesn't submit the page form; don't do default action
       return false;
     });
+
+    socket.on('chat message', function(msg) {
+      $('#messages').append($('<li>').text(msg));
+    });
   </script>
+  </body>
 </html>

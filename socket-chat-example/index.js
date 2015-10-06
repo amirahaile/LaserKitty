@@ -20,12 +20,11 @@ io.on('connection', function(socket) {
   });
 
   socket.on('chat message', function(msg) {
-    console.log('message: ' + msg);
-    // // sends message to everyone including sender
-    // io.emit('chat message', msg);
-    //
-    // // if you want to send it to everyone except certain sockets, use:
-    // // socket.broadcast.emit(msg);
+    // sends message to everyone including sender
+    io.emit('chat message', msg);
+
+    // if you want to send it to everyone except certain sockets, use:
+    // socket.broadcast.emit(msg);
   });
 });
 
