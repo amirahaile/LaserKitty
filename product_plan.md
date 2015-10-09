@@ -1,8 +1,8 @@
 # LaserKitty Capstone
 
-I have one roommate – she is a cat. We live in a microapartment; a cramped studio of 209 sq. ft. Attending Ada takes me away from my home, and her, for a minimum of eight hours a day.
+I have one roommate – she is a cat. We live in a microapartment; a cramped studio of 209 sqft. Attending Ada takes me away from my home, and her, for a minimum of eight hours a day.
 
-To keep her brain stimulated and occupied, I'm going to build her a laser toy she can play with—and I can control in the browser—when I'm not home. It will also help me track her activity and log it for review.
+To keep her brain stimulated and occupied, I'm going to build her a laser toy she can play with—and I can control in the browser—when I'm not home. It will (time permitting) also help me track her activity and log it for review.
 
 <!-- Possible feature(s): give out codes to let my friends play with my kitty (with restricted times) -->
 
@@ -32,7 +32,7 @@ My cat is over-grooming out of boredom. I can't be with her for upwards of eight
 
 ## User Personas  
 
-Pet owners who work full-time or spend a lot of time away from home.
+Pet owners who work full-time or spend a lot of time away from home are the target user. These owners care a great deal about their pet to build/buy a high-tech toy, so it's likely that they'd want a report of its impact on their pets' health and exercise. If time permits, I'll keep track of the time and duration of play for the user to view in the browser. Pet owners, like parents, love to show off their children. Sharing snapshots or recordings of the (potentially) streaming video and/or sharing access to the remote robot with friends could be a feature of the web app.
 
 ## Technologies
 
@@ -40,7 +40,7 @@ Pet owners who work full-time or spend a lot of time away from home.
 _Minimum of 2_  
 
 + Background/Asynch jobs (e.g. email confirmation)
-+ Johnny-Five: JavaScript Micro-controller Programming Framework
++ Raspberry Pi hardware
 + Third-party OAuth
 
 ### Advanced Features
