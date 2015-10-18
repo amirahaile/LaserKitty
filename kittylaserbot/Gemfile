@@ -63,5 +63,5 @@ end
 
 group :production do
   # database
-  gem 'pg' # NOTE: Do you need a database?
+  gem 'pg'
 end
