@@ -27,6 +27,7 @@ To (one-time) set up the Raspberry Pi:
 + (wireless) keyboard
 + (wireless) mouse
 + ethernet cable
++ ethernet USB adapter
 + 32GB SD card
 
 ## Instructions
@@ -43,6 +44,13 @@ Now you'll need to:
 To install Raspbian, the Pi OS, insert the SD card into your Pi and connect the Pi to a keyboard and monitor (via its USB and HDMI ports). Once you connect the Pi to a power supply, it should prompt you to install Raspbian and will boot up after the installation completes.  
 
 Visit the Raspberry Pi website for [detailed instructions](https://www.raspberrypi.org/help/noobs-setup/).
+
+### Control Your Pi via A Laptop and Ethernet
+
+After Raspbian is installed, you'll be able to connect your Pi to the Internet and ultimately ditch the monitor and keyboard for your laptop. Connect your Pi to your laptop via its ethernet port (your laptop may need an ethernet USB adapter).  
+
+[Setup IP address](https://pihw.wordpress.com/guides/direct-network-connection/)
+[VNC viewing](http://diyhacking.com/connect-raspberry-pi-to-laptop-display/)
 
 ### Building the Board
 
@@ -66,5 +74,8 @@ In no particular order:
 
 Andrew Gorcester - well of knowledge & practice Raspberry Pi   
 Loraine Kanervisto - soldering iron  
-Crystal Hess - wireless keyboard and monitor  
+Crystal Hess - wireless keyboard and projector
 Jeremy Flores - cheerleader
+Charles Ellis - WiFI guru
+Elia Grenier - Ethernet adapter
+Carly Jug - wireless mouse
