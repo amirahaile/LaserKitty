@@ -1,0 +1,2 @@
+class BotGuisController < ApplicationController
+end
