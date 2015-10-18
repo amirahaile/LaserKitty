@@ -5,6 +5,7 @@
 .btn-oauth {
   margin: 0 0 10px 0;
   padding: 14px 12px;
+  color: #fff;
 }
 
 .btn-login, .btn-register {
@@ -23,4 +24,16 @@
 
 .form-signup {
   display: none;
+}
+
+#btn-login-fb {
+  background-color: #425f9c;
+}
+
+#btn-login-ig {
+  background-color: #125688;
+}
+
+#btn-login-twitter {
+  background-color: #55acee;
 }
