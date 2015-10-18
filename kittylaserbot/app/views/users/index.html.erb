@@ -5,7 +5,7 @@
 </p>
 
 
-<div class="col-sm-4 center-block no-float">
+<div class="col-sm-4 center-block no-float" id="login-buttons">
   <!-- oauth buttons -->
   <%= button_tag "Facebook",
       class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-fb' %>
@@ -16,10 +16,6 @@
   <%= button_tag "Instagram",
       class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-ig' %>
 
-  <!-- forms -->
-  <div class="form-signup">
-  </div>
-
   <!-- register buttons -->
   <div class="signup-btns">
     <!-- AJAX these -->
@@ -29,4 +25,49 @@
     <%= button_tag "Sign Up",
         class: 'btn col-sm-5 btn-register', id: 'btn-register' %>
   </div>
+</div>
+
+<!-- forms -->
+<div class="col-sm-4 center-block no-float" id="form-signup">
+  <%= form_for(:user, url: new_user_path)  do |f| %>
+    <div class="form-group">
+      <%= f.label :first_name, "First Name" %>
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :last_name, "Last Name" %>
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control"  %>
+    </div>
+
+    <%= button_tag "Back", class: 'btn btn-login btn-back-login-btns' %>
+    <%= f.submit "Sign Up", class: "btn btn-login" %>
+  <% end %>
+</div>
+
+<div class="col-sm-4 center-block no-float" id="form-login">
+  <%= form_for(:session, url: sessions_path)  do |f| %>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control"  %>
+    </div>
+
+    <%= button_tag "Back", class: 'btn btn-login btn-back-login-btns' %>
+    <%= f.submit "Log In", class: "btn btn-login" %>
+  <% end %>
 </div>
