@@ -13,12 +13,11 @@
   <%= button_tag "Twitter",
       class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-twitter' %>
   <br>
-  <%= button_tag "Instagram",
+  <%= button_tag "Instagram", auth_path("instagram"), 
       class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-ig' %>
 
   <!-- register buttons -->
   <div class="signup-btns">
-    <!-- AJAX these -->
     <%= button_tag "Log In",
         class: 'btn col-sm-5 btn-login', id: 'btn-login' %>
 
