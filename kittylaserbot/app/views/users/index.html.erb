@@ -1,0 +1,32 @@
+<h1 class="text-center">Kitty Laser Bot</h1>
+
+<p class="text-center">
+  <strong>New Users!</strong> Access to this site is restricted.<br>Signing up will automatically send a request for access.
+</p>
+
+
+<div class="col-sm-4 center-block no-float">
+  <!-- oauth buttons -->
+  <%= button_tag "Facebook",
+      class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-fb' %>
+  <br>
+  <%= button_tag "Twitter",
+      class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-twitter' %>
+  <br>
+  <%= button_tag "Instagram",
+      class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-ig' %>
+
+  <!-- forms -->
+  <div class="form-signup">
+  </div>
+
+  <!-- register buttons -->
+  <div class="signup-btns">
+    <!-- AJAX these -->
+    <%= button_tag "Log In",
+        class: 'btn col-sm-5 btn-login', id: 'btn-login' %>
+
+    <%= button_tag "Sign Up",
+        class: 'btn col-sm-5 btn-register', id: 'btn-register' %>
+  </div>
+</div>
