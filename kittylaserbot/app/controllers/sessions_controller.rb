@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to bot_gui_path
     else
       flash[:error] = "Incorrect username or password"
       # TODO: @user.errors.messages
