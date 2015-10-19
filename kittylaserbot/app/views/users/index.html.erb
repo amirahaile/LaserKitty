@@ -7,13 +7,13 @@
 
 <div class="col-sm-4 center-block no-float" id="login-buttons">
   <!-- oauth buttons -->
-  <%= button_tag "Facebook",
+  <%= link_to "GitHub", "https://github.com/login/oauth/authorize/?client_id=#{ENV['GITHUB_CLIENT_ID']}", 
       class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-fb' %>
   <br>
   <%= button_tag "Twitter",
       class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-twitter' %>
   <br>
-  <%= button_tag "Instagram", auth_path("instagram"), 
+  <%= link_to "Instagram", auth_path("instagram"),
       class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-ig' %>
 
   <!-- register buttons -->
