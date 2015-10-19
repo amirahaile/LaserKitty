@@ -27,6 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 # OAuth
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-instagram', '~> 1.0.1'
+gem 'omniauth-github', '~> 1.1.2'
 
 # HTTP Requests
 gem 'httparty', '~> 0.13.7'
