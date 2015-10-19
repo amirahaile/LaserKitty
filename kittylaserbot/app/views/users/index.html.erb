@@ -7,14 +7,14 @@
 
 <div class="col-sm-4 center-block no-float" id="login-buttons">
   <!-- oauth buttons -->
-  <%= link_to "GitHub", "https://github.com/login/oauth/authorize/?client_id=#{ENV['GITHUB_CLIENT_ID']}",
+  <%= link_to "Facebook", auth_path("facebook"),
       class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-fb' %>
   <br>
-  <%= button_tag "Twitter",
+  <%= link_to "Twitter", auth_path("twitter"),
       class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-twitter' %>
   <br>
-  <%= link_to "Instagram", "https://api.instagram.com/oauth/authorize?client_id=#{ENV['INSTAGRAM_CLIENT_ID']}&redirect_uri=#{ENV['INSTAGRAM_REDIRECT_URI']}&response_type=code",
-      class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-ig' %>
+  <%= link_to "Github", auth_path("github"),
+      class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-github' %>
 
   <!-- register buttons -->
   <div class="signup-btns">
@@ -55,7 +55,7 @@
 </div>
 
 <div class="col-sm-4 center-block no-float" id="form-login">
-  <%= form_for(:session, url: sessions_path)  do |f| %>
+  <%= form_for(:session, url: auth_path("manual"))  do |f| %>
     <div class="form-group">
       <%= f.label :email %>
       <%= f.text_field :email, class: "form-control" %>
