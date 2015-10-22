@@ -127,7 +127,6 @@ GEM
     passenger (5.0.20)
       rack
       rake (>= 0.8.1)
-    pg (0.18.3)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -238,8 +237,7 @@ DEPENDENCIES
   omniauth-facebook (~> 2.0.1)
   omniauth-github (~> 1.1.2)
   omniauth-twitter (~> 1.2.1)
-  passenger
-  pg
+  passenger (~> 5.0.20)
   pry-rails
   rails (= 4.2.4)
   rspec-rails
