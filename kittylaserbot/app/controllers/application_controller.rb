@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  def current_identity
+    @current_identity ||= Identity.find_by(user_id: session[:user_id], provider: session[:provider])
+  end
+
   helper_method :signed_in?, :current_user
 
   def signed_in?

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   # NOTE: Maybe check for matching emails to link new OAuth identities with a user.
 
   def create # sign in
-    auth = auth_hash # private Session method
+    auth = auth_hash
     provider = params[:provider].capitalize
 
     # find identity
@@ -16,6 +16,8 @@ class SessionsController < ApplicationController
       # no identity was found; create one
       @identity = Identity.create_with_omniauth(auth)
     end
+
+    @current_identity = @identity
 
     if signed_in?
       if @identity.user == current_user
@@ -44,6 +46,7 @@ class SessionsController < ApplicationController
         # TODO: new up a User object so it can prepopulate with info grabbed from omniauth
         msg = "#{provider} account successfully linked! Please finish registering."
         redirect_to new_user_path, notice: msg
+        return
       end
     end
 
