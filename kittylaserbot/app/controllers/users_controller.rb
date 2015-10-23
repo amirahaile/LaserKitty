@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @users = User.all
+    @count = 1
+  end
+
   private
 
   def user_params
