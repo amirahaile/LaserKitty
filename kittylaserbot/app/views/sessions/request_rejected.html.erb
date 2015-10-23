@@ -1,3 +1,8 @@
-<!-- your request for invite was rejected -->
-<!-- here's why -->
 <h1>Your request for an invite was rejected.</h1>
+<p>
+  <%= User.find(session[:user_id]).status_msg %>
+</p>
+
+<p>
+  If you feel this decisionw was made in error, please email me at <%= mail_to "amira.dhaile@gmail.com" %>. 
+</p>
