@@ -9,10 +9,10 @@ class Identity < ActiveRecord::Base
 # Methods ----------------------------------------------------------------------
   def self.find_with_omniauth(auth_hash)
     # returns Identity obj or `nil`
-    find_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
+    Identity.find_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
   end
 
   def self.create_with_omniauth(auth_hash)
-    create(uid: auth_hash['uid'], provider: auth_hash['provider'])
+    Identity.create(uid: auth_hash['uid'], provider: auth_hash['provider'])
   end
 end
