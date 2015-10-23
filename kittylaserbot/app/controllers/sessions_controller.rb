@@ -17,8 +17,6 @@ class SessionsController < ApplicationController
       @identity = Identity.create_with_omniauth(auth)
     end
 
-    @current_identity = @identity
-
     if signed_in?
       if @identity.user == current_user
         # signed in user tried to link an already linked account
@@ -38,12 +36,15 @@ class SessionsController < ApplicationController
       end
     else
       if @identity.user.present?
-        # identity has an associated user
+        # identity has an associated user; sign in like normal
         self.current_user = @identity.user # signing into session
         msg = ""
       else
         # no user associated; create a new one
-        # TODO: new up a User object so it can prepopulate with info grabbed from omniauth
+        user = User.create_from_omniauth(auth)
+        session[:user_id] = user.id # signing into session
+        @identity.user = user
+
         msg = "#{provider} account successfully linked! Please finish registering."
         redirect_to new_user_path, notice: msg
         return
