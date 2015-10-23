@@ -1,0 +1,12 @@
+<h1 class="text-center">Register</h1>
+
+<% if flash[:notice] %>
+  <div class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<br><br>
+
+<%= render 'shared/form_user' %>
