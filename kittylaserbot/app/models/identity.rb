@@ -1,10 +1,10 @@
 class Identity < ActiveRecord::Base
 # Associations -----------------------------------------------------------------
   belongs_to :user
-  
+
 # Validations ------------------------------------------------------------------
-  validate :provider, presence: true
-  validate :uid, presence: true
+  validates :provider, presence: true
+  validates :uid, presence: true
 
 # Methods ----------------------------------------------------------------------
   def self.find_with_omniauth(auth_hash)
