@@ -1,5 +1,5 @@
 $(function() {
-
+  // LOGIN
   var buttonsDiv = $("#login-buttons");
   var formDiv;
 
@@ -27,5 +27,25 @@ $(function() {
 
     buttonsDiv.css("display", "block");
     formDiv.css("display", "none");
+  });
+
+  // SETTINGS PAGE
+  var accountTab = $("#account");
+  var inviteTab = $("#invites");
+  var allTabs = $(".nav-tabs li");
+
+  $(inviteTab, accountTab).click(function(event) {
+    event.preventDefault();
+    $(allTabs).removeClass("active");
+    $(this).addClass("active");
+    $(".settings div").css("dispaly", "none");
+
+    if (this === inviteTab[0]) {
+      $(".settings .table-invites").css("display", "block");
+    }
+
+    if (this === accountTab[0]) {
+      $(".settings .form-user").css("display", "block");
+    }
   });
 });
