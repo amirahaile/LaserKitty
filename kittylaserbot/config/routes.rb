@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'users#index'
-  resources :users
+  resources :users, except: [:show]
 
   # omniauth
   get '/auth/:provider',          to: 'sessions#new',   as: 'auth'
