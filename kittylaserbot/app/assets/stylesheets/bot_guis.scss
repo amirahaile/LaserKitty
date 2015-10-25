@@ -155,11 +155,21 @@ $bkgd-color: #C2E7DA;
 }
 
 .keyboard > .key {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin-left: 0;
+  // in a div & .pressed won't work if it has a transform attr
+  &:first-child {
+    position: absolute;
+    top: 17%;
+    left: 35%;
+    margin-left: 0;
+  }
+
+  &:nth-child(n+2) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-left: 0;
+  }
 }
 
 .bottom-keys {
