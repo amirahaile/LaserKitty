@@ -62,6 +62,10 @@
       <%= f.password_field :password_confirmation, class: 'form-control', required: true %>
     </div>
 
-    <%= f.submit "Register", class: 'btn btn-primary center-block' %>
+    <% unless signed_in? %>
+      <%= f.submit "Register", class: 'btn btn-primary center-block' %>
+    <% else %>
+      <%= f.submit "Update", class: 'btn btn-primary center-block' %>
+    <% end %>
   <% end %>
 </div>
