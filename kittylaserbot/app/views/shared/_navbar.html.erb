@@ -1,8 +1,13 @@
 <nav class="navbar">
   <div class="container-fluid text-right">
-    <%= link_to(edit_user_path(session[:user_id])) do %>
-      <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-      Account
+    <!-- changes link when on the settings page -->
+    <% unless request.original_fullpath.slice(-4, 4) == "edit" %>
+      <%= link_to(edit_user_path(session[:user_id])) do %>
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        Account
+      <% end %>
+    <% else %>
+      <%= link_to "Dashboard", bot_gui_path %>
     <% end %>
     |
     <%= link_to "Logout", logout_path %>
