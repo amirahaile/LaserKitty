@@ -1,24 +1,94 @@
 <div class="container-fluid">
-  <div class="bot-video center-block no-float">
-    <iframe src="http://www.ustream.tv/embed/21436613?html5ui&autoplay=true" style="border: 0 none transparent;"  webkitallowfullscreen allowfullscreen frameborder="no" width="720" height="405"></iframe><br /><a href="http://www.ustream.tv/" style="padding: 2px 0px 4px; width: 400px; background: #ffffff; display: block; color: #000000; font-weight: normal; font-size: 10px; text-decoration: underline; text-align: center;" target="_blank">Live streaming video by Ustream</a>
+  <div class="bot-container row">
+    <div class="bot-video center-block no-float">
+      <iframe src="http://www.ustream.tv/embed/21436613?html5ui&autoplay=true" style="border: 0 none transparent;"  webkitallowfullscreen allowfullscreen frameborder="no" width="720" height="405"></iframe><br />
+    </div>
   </div>
 
-  <div class="row">
-    <!-- on/off buttons -->
-    <div class="sm-col-3">
-      <%= button_tag "Start", class: "btn btn-success" %>
-      <br>
-      <%= button_tag "Stop", class: "btn btn-danger" %>
+  <!-- archived videos -->
+  <div class="row videos" id="videos">
+    <div class="col-sm-3 video-col">
+      <div class="thumbnail-vid"></div>
+      <time datetime="2015-10-24 08:00">10.24.2015 | 8:00 am</time>
     </div>
+    <div class="col-sm-3 video-col">
+      <div class="thumbnail-vid"></div>
+      <time datetime="2015-10-24 08:00">10.24.2015 | 8:00 am</time>
+    </div>
+    <div class="col-sm-3 video-col">
+      <div class="thumbnail-vid"></div>
+      <time datetime="2015-10-24 08:00">10.24.2015 | 8:00 am</time>
+    </div>
+    <div class="col-sm-3 video-col">
+      <div class="thumbnail-vid"></div>
+      <time datetime="2015-10-24 08:00">10.24.2015 | 8:00 am</time>
+    </div>
+  </div>
+
+  <!-- control panel -->
+  <div class="row controls" id="controls">
 
     <!-- scheduler -->
-    <div class="sm-col-3">
+    <div class="col-sm-4">
+      <h3 class="headline">Schedule</h3>
+      <span></span>
+      <div class="date">
+        mon-fri
+        <br>
+        8am-5pm
+        <br>
+        every 2 hrs
+      </div>
 
+      <br>
+
+      <%= button_tag "Reschedule" %>
+    </div>
+
+    <!-- on/off button & drag down -->
+    <div class="col-sm-4 text-center">
+      <%= button_tag "Start", class: "btn btn-success" %>
+      <br>
+      <div class="pull-video">
+        <h3> <%= link_to "Archived Videos", "", id: "video-archive" %> </h3>
+        <span class="glyphicon glyphicon-menu-down pull-down-arrow" aria-hidden="true"></span>
+      </div>
     </div>
 
     <!-- mouse controls -->
-    <div class="sm-col-3">
+    <div class="col-center col-sm-4">
+      <h2 class="special text-center">Coming Soon</h2>
+      <!-- thank you Peiwen Lu for the key styling -->
+      <!-- http://codepen.io/P233/pen/qEagi?editors=110 -->
+      <div class="keyboard">
+        <div class="key">
+          <div class="keycap">
+            <span class="key-center glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+          </div>
+        </div>
 
+        <br>
+
+        <div class="bottom-keys">
+          <div class="key">
+            <div class="keycap">
+              <span class="key-center glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+            </div>
+          </div>
+
+          <div class="key">
+            <div class="keycap">
+              <span class="key-center glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+            </div>
+          </div>
+
+          <div class="key">
+            <div class="keycap">
+              <span class="key-center glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
