@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// LOGIN PAGE
 .login {
   background-color: rgba(255, 255, 255, .4);
   border-radius: 5px;
@@ -44,4 +45,20 @@
 
 #btn-login-twitter {
   background-color: #55acee;
+}
+
+.required {
+  color: red;
+}
+
+// SETTINGS PAGE
+.settings {
+  background-color: lighten(#C2E7DA, 5%);
+  padding: 12% 7% 7% 7%;
+  border: 1px solid darken(#C2E7DA, 10%);
+  border-top-color: transparent;
+}
+
+.table-invites {
+  display: none;
 }
