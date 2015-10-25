@@ -1,28 +1,24 @@
-<h1 class="text-center">Kitty Laser Bot</h1>
+<div class="col-sm-4 center-block no-float login" id="login-buttons">
+  <h1 class="text-center">Kitty Laser Bot</h1>
 
-<p class="text-center">
-  <strong>New Users!</strong> Access to this site is restricted.<br>Signing up will automatically send a request for access.
-</p>
+  <p class="text-center">
+    <strong>New Users!</strong> Access to this site is restricted.<br>Signing up will automatically send a request for access.
+  </p>
 
-
-<div class="col-sm-4 center-block no-float" id="login-buttons">
   <!-- oauth buttons -->
-  <%= link_to "Facebook", auth_path("facebook"),
+  <%= link_to "Sign in with Facebook", auth_path("facebook"),
       class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-fb' %>
   <br>
-  <%= link_to "Twitter", auth_path("twitter"),
+  <%= link_to "Sign in with Twitter", auth_path("twitter"),
       class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-twitter' %>
   <br>
-  <%= link_to "Github", auth_path("github"),
+  <%= link_to "Sign in with Github", auth_path("github"),
       class: 'btn center col-sm-12 btn-oauth', id: 'btn-login-github' %>
 
   <!-- register buttons -->
   <div class="signup-btns">
-    <%= button_tag "Log In",
-        class: 'btn col-sm-5 btn-login', id: 'btn-login' %>
-
-    <%= button_tag "Sign Up",
-        class: 'btn col-sm-5 btn-register', id: 'btn-register' %>
+    <%= button_tag "Login",
+        class: 'btn btn-login', id: 'btn-login' %>
   </div>
 </div>
 
