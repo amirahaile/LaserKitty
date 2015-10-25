@@ -101,6 +101,18 @@ $bkgd-color: #C2E7DA;
 }
 
 // KEYS
+.disabled {
+  width: 230px;
+  height: 193px;
+  background-color: rgba(0,0,0,.3);
+  z-index: 1;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -25%);
+  border-radius: 3px;
+}
+
 .key {
   width: 54px;
   height: 54px;

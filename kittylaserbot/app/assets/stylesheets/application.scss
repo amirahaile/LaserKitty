@@ -25,8 +25,11 @@ html, body {
 }
 
 h2.special {
+  position: relative;
   font-family: 'Lobster', cursive;
   margin: 9px 0 0 0;
+  z-index: 2;
+  color: #fff;
 }
 
 h3 {
