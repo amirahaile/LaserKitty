@@ -152,14 +152,14 @@ $bkgd-color: #C2E7DA;
   top: 250%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 335%;
+  height: 291%;
 }
 
 .keyboard > .key {
   // in a div & .pressed won't work if it has a transform attr
   &:first-child {
     position: absolute;
-    top: 17%;
+    top: 10%;
     left: 35%;
     margin-left: 0;
   }
