@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="container-fluid text-right">
-    <%= link_to() do %>
+    <%= link_to(edit_user_path(session[:user_id])) do %>
       <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
       Account
     <% end %>
