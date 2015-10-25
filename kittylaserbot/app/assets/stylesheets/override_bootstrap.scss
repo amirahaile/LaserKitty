@@ -1,0 +1,29 @@
+// ACCOUNT PAGE
+.nav-tabs {
+  border-bottom: 1px solid darken(#C2E7DA, 10%);
+}
+
+.nav-tabs li.active > a {
+  background-color: lighten(#C2E7DA, 5%);
+  border-color: darken(#C2E7DA, 10%);
+  border-bottom-color: transparent;
+
+  &:hover {
+    background-color: lighten(#C2E7DA, 5%);
+    border-color: darken(#C2E7DA, 10%);
+    border-bottom-color: transparent;
+  }
+}
+
+.nav-tabs > li > a {
+  $inactive-tab: darken(#C2E7DA, 5%);
+  background-color: $inactive-tab;
+  border-color: darken(#C2E7DA, 10%);
+  border-bottom-color: transparent;
+
+  &:hover {
+    background-color: lighten($inactive-tab, 5%);
+    border-color: darken(#C2E7DA, 10%);
+    border-bottom-color: transparent;
+  }
+}
