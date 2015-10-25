@@ -3,6 +3,12 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+    @users = User.all
+    @count = 1
+  end
+
   def update
     user_id = session[:user_id]
     User.update(user_id, user_params)
@@ -15,11 +21,6 @@ class UsersController < ApplicationController
     else
       redirect_to :back
     end
-  end
-
-  def show
-    @users = User.all
-    @count = 1
   end
 
   private
