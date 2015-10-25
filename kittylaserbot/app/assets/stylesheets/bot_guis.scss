@@ -2,6 +2,167 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$fat-font: 'Days One', sans-serif;
+$bkgd-color: #C2E7DA;
+
+
+// VIDEO
+.bot-container {
+  position: relative;
+  display: block;
+  height: 31em;
+  z-index: 99;
+  background-color: #C2E7DA;
+}
+
 .bot-video {
-  border: 2px solid #000;
+  height: 425px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 10px solid #E2B1B1;
+  border-radius: 3px;
+}
+
+// CONTROL PANEL
+.controls, .videos {
+  position: relative;
+  margin-top: 14px;
+}
+
+.pull-video {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 10px;
+  width: 50%;
+  height: 126%;
+  position: absolute;
+  top: 330%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &:hover .pull-down-arrow {
+    animation-duration: 3s;
+    animation-name: bounce;
+  }
+}
+
+@keyframes bounce {
+   2% { top: 115%; }
+  15% { top: 135%; }
+  25% { top: 120%; }
+  30% { top: 130%; }
+  50% { top: 120%; }
+}
+
+.pull-down-arrow {
+  position: absolute;
+  top: 120%;
+  left: 47%;
+  color: #fff;
+  font-size: 20px;
+}
+
+// VIDEO ARCHIVE
+.videos {
+  position: relative;
+  top: -200px;
+  height: 13em;
+  display: none;
+}
+
+.video-col {
+  height: 13em;
+}
+
+.thumbnail-vid {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 125px;
+  background-color: #000;
+  display: block;
+}
+
+.thumbnail-vid + time {
+  position: relative;
+  top: 33px;
+  left: 17px;
+}
+
+// SCHEDULE
+
+.date {
+  font-family: $fat-font;
+  font-size: 26px;
+  color: #549F93;
+}
+
+// KEYS
+.key {
+  width: 54px;
+  height: 54px;
+  margin: 2px;
+  border-width: 3px 7px 10px;
+  border-style: solid;
+  border-radius: 4px;
+  float: left;
+  background: #d3cfcc;
+  border-color: #ece8e4 #dedad6 #c9c4c4;
+
+  &.pressed {
+    -webkit-transform: scale(0.95, 0.95);
+    -moz-transform: scale(0.95, 0.95);
+    -ms-transform: scale(0.95, 0.95);
+    -o-transform: scale(0.95, 0.95);
+    transform: scale(0.95, 0.95);
+  }
+}
+
+.key .keycap {
+  width: 39px;
+  height: 40px;
+  padding: 5px 0 0 7px;
+  font-size: 18px;
+  line-height: 1;
+  background: #f5f3f1;
+  background: -webkit-linear-gradient(left, #e5e2e1, #f5f3f1, #e5e2e1);
+  background: -moz-linear-gradient(left, #e5e2e1, #f5f3f1, #e5e2e1);
+  background: -ms-linear-gradient(left, #e5e2e1, #f5f3f1, #e5e2e1);
+  background: -o-linear-gradient(left, #e5e2e1, #f5f3f1, #e5e2e1);
+  background: linear-gradient(left, #e5e2e1, #f5f3f1, #e5e2e1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  position: relative;
+}
+
+.key-center {
+  padding: 15% 0 0 10%;
+}
+
+// Positioning
+.col-center {
+  position: relative;
+}
+
+.keyboard {
+  position: absolute;
+  top: 250%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.keyboard > .key {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: 0;
+}
+
+.bottom-keys {
+  position: relative;
+  top: 51px;
 }
