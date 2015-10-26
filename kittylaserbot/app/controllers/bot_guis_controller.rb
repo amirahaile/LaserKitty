@@ -14,9 +14,9 @@ class BotGuisController < ApplicationController
   def io
     bot = find_bot
     if bot.io == "off"
-      bot.update(io: "on")
+      bot.update(io: "on", controller: "browser")
     else
-      bot.update(io: "off")
+      bot.update(io: "off", controller: "pi")
     end
 
     redirect_to :back
