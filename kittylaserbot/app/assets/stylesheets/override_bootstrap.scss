@@ -1,3 +1,35 @@
+$bkgd-color: #C2E7DA;
+$secondary-color: #8498A8;
+$tertiary-color: #549F93;
+$pop-color: #E2B1B1;
+$fat-font: 'Days One', sans-serif;
+
+// FORM
+.form-control {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0;
+  border-bottom: 1px dashed $tertiary-color;
+  box-shadow: none;
+  font-family: $fat-font;
+  color: $pop-color;
+  text-transform: uppercase;
+  font-size: 24px;
+  padding-left: 0;
+
+  &:focus {
+    box-shadow: none;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    background-color: darken(lighten(#C2E7DA, 5%), 5%);
+  }
+}
+
+label {
+  color: $tertiary-color;
+}
+
 // ACCOUNT PAGE
 // Tabs
 .nav-tabs {
@@ -42,8 +74,8 @@ div.controls .btn {
 }
 
 div.controls .btn-success {
-  background-color: #8498A8;
-  border-color: darken(#8498A8, 10%);
+  background-color: $secondary-color;
+  border-color: darken($secondary-color, 10%);
 }
 
 div.pull-video h3 {
