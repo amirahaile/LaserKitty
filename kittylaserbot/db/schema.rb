@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023204504) do
+ActiveRecord::Schema.define(version: 20151026220035) do
+
+  create_table "bots", force: :cascade do |t|
+  end
 
   create_table "identities", force: :cascade do |t|
     t.string   "uid"
