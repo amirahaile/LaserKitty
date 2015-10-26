@@ -30,22 +30,37 @@ $(function() {
   });
 
   // SETTINGS PAGE
-  var accountTab = $("#account");
-  var inviteTab = $("#invites");
-  var allTabs = $(".nav-tabs li");
+  var accountTab = $("#account")[0];
+  var inviteTab  = $("#invites")[0];
+  var oauthTab   = $("#oauth-links")[0];
+  var allTabs    = $(".nav-tabs li");
 
-  $(inviteTab, accountTab).click(function(event) {
+  // I would have consolidated this into one `.click` function,
+  // but putting multiple objects on the click
+  // (e.g. `$(inviteTab, oauthTab, accountTab).click()`)
+  // seemed to work only once if *one* of the objects were clicked, 
+  // not if *any* of them were.
+  $(inviteTab).click(function(event) {
     event.preventDefault();
-    $(allTabs).removeClass("active");
+    $(".settings > div").css("display", "none");
+    allTabs.removeClass("active");
     $(this).addClass("active");
-    $(".settings div").css("dispaly", "none");
+    $(".settings .table-invites").css("display", "block");
+  });
 
-    if (this === inviteTab[0]) {
-      $(".settings .table-invites").css("display", "block");
-    }
+  $(oauthTab).click(function(event) {
+    event.preventDefault();
+    $(".settings > div").css("display", "none");
+    allTabs.removeClass("active");
+    $(this).addClass("active");
+    $(".settings .account-link").css("display", "block");
+  });
 
-    if (this === accountTab[0]) {
-      $(".settings .form-user").css("display", "block");
-    }
+  $(accountTab).click(function(event) {
+    event.preventDefault();
+    $(".settings > div").css("display", "none");
+    allTabs.removeClass("active");
+    $(this).addClass("active");
+    $(".settings .form-user").css("display", "block");
   });
 });
