@@ -52,13 +52,36 @@
 }
 
 // SETTINGS PAGE
+nav + div {
+  height: 100%;
+}
+
 .settings {
   background-color: lighten(#C2E7DA, 5%);
   padding: 12% 7% 7% 7%;
   border: 1px solid darken(#C2E7DA, 10%);
   border-top-color: transparent;
+  height: 100%;
 }
 
 .table-invites {
   display: none;
+}
+
+.icon-github {
+  width: 30px;
+  height: 30px;
+  background: url("images/github.svg") no-repeat;
+}
+
+.icon-twitter {
+  width: 30px;
+  height: 30px;
+  background: url("images/twitter.svg") no-repeat;
+}
+
+.icon-facebook {
+  width: 30px;
+  height: 30px;
+  background: url("images/facebook.svg") no-repeat;
 }

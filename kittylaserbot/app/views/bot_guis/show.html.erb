@@ -30,23 +30,21 @@
 
     <!-- scheduler -->
     <div class="col-sm-4">
-      <h3 class="headline">Schedule</h3>
-      <span></span>
-      <div class="date">
-        mon-fri
-        <br>
-        8am-5pm
-        <br>
-        every 2 hrs
+      <div class="schedule">
+        <h3 class="headline">Next Scheduled Playtime</h3>
+        <span class="divider"></span>
+        <time class="date">
+          Today <br> 8PM, 2 min
+        </time>
+
+        <br><br>
+
+        <%= button_tag "Reschedule", class: "btn btn-default" %>
       </div>
-
-      <br>
-
-      <%= button_tag "Reschedule" %>
     </div>
 
     <!-- on/off button & drag down -->
-    <div class="col-sm-4 text-center">
+    <div class="col-sm-4 text-center controls-center">
       <%= button_tag "Start", class: "btn btn-success" %>
       <br>
       <div class="pull-video">

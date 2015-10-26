@@ -9,6 +9,7 @@ $bkgd-color: #C2E7DA;
 // VIDEO
 .bot-container {
   position: relative;
+  top: -28px;
   display: block;
   height: 31em;
   z-index: 99;
@@ -28,16 +29,19 @@ $bkgd-color: #C2E7DA;
 // CONTROL PANEL
 .controls, .videos {
   position: relative;
-  margin-top: 14px;
+}
+
+.controls-center {
+  padding-top: 40px;
 }
 
 .pull-video {
   border-bottom: 2px solid #fff;
   padding-bottom: 10px;
   width: 50%;
-  height: 126%;
+  height: 27%;
   position: absolute;
-  top: 330%;
+  top: 158%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -93,18 +97,36 @@ $bkgd-color: #C2E7DA;
 }
 
 // SCHEDULE
-
-.date {
+time {
   font-family: $fat-font;
   font-size: 26px;
   color: #549F93;
+}
+
+span.divider {
+  border-bottom: 2px solid #fff;
+  width: 25%;
+  margin-top: -4px;
+  display: block;
+}
+
+.controls > div:first-child {
+  position: relative;
+}
+
+.schedule {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -3%);
 }
 
 // KEYS
 .disabled {
   width: 230px;
   height: 193px;
-  background-color: rgba(0,0,0,.3);
+  background-color: darken(#549F93, 10%);
+  opacity: .3;
   z-index: 1;
   position: absolute;
   top: 100%;

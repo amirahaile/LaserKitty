@@ -7,6 +7,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = User.all
     @count = 1
+
+    providers = @user.identities.select { |identity| identity.provider }
+    @facebook = providers.include?("facebook") ? "facebook_light" : "facebook"
+    @github = providers.include?("github") ? "github_light" : "github"
+    @twitter = providers.include?("twitter") ? "twitter_light" : "twitter"
   end
 
   def update

@@ -1,19 +1,24 @@
 <div class="col-sm-7 center-block no-float">
   <ul class="nav nav-tabs">
     <li role="presentation" class="active" id="account">
-      <%= link_to "Account" %>
+      <%= link_to "Settings" %>
     </li>
     <li role="presentation" id="invites">
       <%= link_to "Invites" %>
     </li>
-    <li role="presentation">
-      <%= link_to %>
+    <li role="presentation" id="oauth-links">
+      <%= link_to "Account Links" %>
     </li>
   </ul>
 
   <div class="settings">
     <div class="form-user">
       <%= render "shared/form_user" %>
+    </div>
+    <div class="account-links">
+      <span class="icon-facebook"></span>
+      <span class="icon-twitter"></span>
+      <span class="icon-github"></span>
     </div>
 
     <!-- user invites -->

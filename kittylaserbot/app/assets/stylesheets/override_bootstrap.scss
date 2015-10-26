@@ -27,3 +27,18 @@
     border-bottom-color: transparent;
   }
 }
+
+// CONTROL PAGE
+div.controls .btn {
+  padding: 10px 50px;
+  font-size: 20px;
+}
+
+div.controls .btn-success {
+  background-color: #8498A8;
+  border-color: darken(#8498A8, 10%);
+}
+
+div.pull-video h3 {
+  margin: 0;
+}
