@@ -23,8 +23,11 @@ class BotGuisController < ApplicationController
   end
 
   def prepare
-    bot = Bot.find(session[:bot_id])
-    status = bot.io
-    render json: { io: status }.to_json
+    bot = find_bot
+    response = {
+      io: bot.io,
+      controller: bot.controller
+    }
+    render json: response.to_json
   end
 end
