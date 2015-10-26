@@ -1,4 +1,22 @@
 $(function() {
+  // START/STOP BUTTON
+  $("#btn-io").click(function(event) {
+    event.preventDefault();
+
+    btnName = $(this).html();
+
+    if(btnName === "Start") {
+      $(this).html("Stop")
+             .css("background-color", "red")
+             .css("border-color", "red");
+    }
+    if(btnName === "Stop") {
+      $(this).html("Start")
+             .css("background-color", "#8498A8")
+             .css("border-color", "#677f92");
+    }
+  });
+
   // ARCHIVED VIDEO DROP-DOWN
   $("#video-archive").click(function(event) {
     event.preventDefault();
