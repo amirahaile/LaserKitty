@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/logout',                  to: 'sessions#destroy', as: 'logout'
   # GUI
   get '/bot_gui',                 to: 'bot_guis#show',  as: 'bot_gui'
+  get '/power_bot',               to: 'bot_guis#io'
 
   # RaspPi API
   get '/raspi', to: 'bot_guis#prepare'
