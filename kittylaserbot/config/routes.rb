@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   # GUI
   get '/bot_gui',                 to: 'bot_guis#show',  as: 'bot_gui'
 
+  # RaspPi API
+  get '/raspi', to: 'api#prepare'
+
 end
