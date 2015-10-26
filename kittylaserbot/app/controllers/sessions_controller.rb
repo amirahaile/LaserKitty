@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
       @identity = Identity.create_with_omniauth(auth)
     end
 
+    # takes care of identities & user objects
     if signed_in?
       if @identity.user == current_user
         # signed in user tried to link an already linked account
@@ -51,6 +52,12 @@ class SessionsController < ApplicationController
       end
     end
 
+    # creats a bot for RaspPi requests
+    bot = Bot.create()
+    bot.user = User.find(session[:user_id])
+    session[:bot_id] = bot.id
+
+    # redirect/render views
     case current_user.invite_status
     when "accepted"
       redirect_to bot_gui_path, notice: msg
@@ -64,6 +71,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy # sign out
+    Bot.destroy_all
     self.current_user = nil
     redirect_to root_path
   end
