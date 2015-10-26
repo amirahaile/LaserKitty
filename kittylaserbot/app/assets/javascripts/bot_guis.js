@@ -1,8 +1,6 @@
 $(function() {
   // START/STOP BUTTON
   $("#btn-io").click(function(event) {
-    event.preventDefault();
-
     btnName = $(this).html();
 
     if(btnName === "Start") {
