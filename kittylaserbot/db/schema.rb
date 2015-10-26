@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026225722) do
+ActiveRecord::Schema.define(version: 20151026231353) do
 
   create_table "bots", force: :cascade do |t|
     t.string  "io",         default: "off"
     t.integer "user_id"
-    t.string  "controller", default: "browser"
+    t.string  "controller", default: "pi"
   end
 
   create_table "identities", force: :cascade do |t|
