@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 # Associations -----------------------------------------------------------------
   has_secure_password # bcrypt
   has_many :identities
+  has_one :bot
 
 # Validations ------------------------------------------------------------------
   validates :email, presence: true, uniqueness: true
