@@ -11,13 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027162401) do
-
-  create_table "bots", force: :cascade do |t|
-    t.string  "io",         default: "off"
-    t.integer "user_id"
-    t.string  "controller", default: "pi"
-  end
+ActiveRecord::Schema.define(version: 20151027192158) do
 
   create_table "identities", force: :cascade do |t|
     t.string   "uid"
@@ -39,7 +33,6 @@ ActiveRecord::Schema.define(version: 20151027162401) do
     t.string   "username"
     t.string   "invite_status",   default: "pending"
     t.string   "status_msg"
-    t.integer  "bot_id"
     t.datetime "last_login"
     t.datetime "last_logout"
   end
