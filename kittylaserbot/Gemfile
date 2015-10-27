@@ -43,6 +43,7 @@ gem 'passenger', '~> 5.0.20'
 gem 'bootstrap-sass', '~> 3.3.5.1'
 
 # Data Structure Storage
+gem 'redis', '~> 3.2.1'
 gem 'redis-rails', '~> 4.0.0'
 gem 'mock_redis', '~> 0.15.3'
 
