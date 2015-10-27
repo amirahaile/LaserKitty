@@ -1,13 +1,13 @@
 class BotGuisController < ApplicationController
   def show
-    @bot_status = @@bot.io_status
-    @bot_controller = @@bot.controller
+    @bot_status = Bot.status
+    @bot_controller = Bot.controller
   end
 
   def update
     json = JSON.parse(request.body.read)
-    @@bot.io_status = json["io"]
-    @@bot.controller = json["controller"]
+    $redis.set("status", json["io"])
+    $redis.set("controller", json["controller"])
 
     redirect_to :show
   end
