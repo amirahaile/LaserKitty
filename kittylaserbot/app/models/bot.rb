@@ -1,16 +1,34 @@
-class Bot < ActiveRecord::Base
-  include Singleton
-  attr_accessor :io_status, :controller
+class Bot
+  def self.instantiate
+    status = $redis.exists("status") == 1 ? true : false
+    controller = $redis.exists("status") == 1 ? true : false
 
-# Associations -----------------------------------------------------------------
-  has_one :user
+    unless status && controller
+      $redis.set("status", "off")
+      $redis.set("controller", "pi")
+    end
+  end
 
-# Methods ----------------------------------------------------------------------
-  def prepare
-    response = {
-      io: @@bot.io_status,
-      controller: @@bot.controller
-    }
+  # getters
+  def self.status
+    $redis.get("status")
+  end
+
+  def self.controller
+    $redis.get("controller")
+  end
+
+  # setters
+  def self.status=(state)
+    $redis.set("status", state)
+  end
+
+  def self.controller=(controller)
+    $redis.set("controller", controller)
+  end
+
+  def self.prepare
+    response = { io: Bot.status, controller: Bot.controller }
     render json: response.to_json
   end
 end
