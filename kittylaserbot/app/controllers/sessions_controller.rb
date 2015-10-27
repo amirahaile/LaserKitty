@@ -58,10 +58,9 @@ class SessionsController < ApplicationController
       end
     end
 
-    # creats a bot for RaspPi requests
-    bot = Bot.create()
-    bot.user = User.find(session[:user_id])
-    session[:bot_id] = bot.id
+    # first user will create Singleton instance of bot
+    # (ewww, necessary global evil. sorry <3jnf)
+    @@bot = Bot.instance
 
     # redirect/render views
     case current_user.invite_status
