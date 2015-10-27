@@ -15,9 +15,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    user_id = session[:user_id]
-    User.update(user_id, user_params)
-    user = User.find(user_id)
+    user = User.find(session[:user_id])
+    user.update(user_params)
 
     if user.invite_status == "pending"
       render "sessions/request_pending"
