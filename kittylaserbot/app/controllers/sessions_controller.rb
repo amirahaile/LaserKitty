@@ -39,15 +39,17 @@ class SessionsController < ApplicationController
       if @identity.user.present?
         # identity has an associated user; sign in like normal
         self.current_user = @identity.user # signing into session
+        self.current_user.last_login = DateTime.now
         msg = ""
       else
         # no user associated; create a new one
         user = User.create_from_omniauth(auth)
+        user.last_login = DateTime.now
         session[:user_id] = user.id # signing into session
         @identity.user = user
 
         # gives me admin powers
-        # secure bcuz at this point, User obj only has OAuth info
+        # NOTE: secure bcuz at this point, User obj only has OAuth info?
         if user.email == "amira.dhaile@gmail.com"
           user.update(invite_status: "accepted")
         end
@@ -76,7 +78,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy # sign out
-    Bot.destroy_all
+    current_user.last_logout = DateTime.now
     self.current_user = nil
     redirect_to root_path
   end
