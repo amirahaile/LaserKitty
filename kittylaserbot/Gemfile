@@ -76,3 +76,5 @@ group :production do
   # Heroku db
   gem 'pg'
 end
+
+ruby "2.2.2"
