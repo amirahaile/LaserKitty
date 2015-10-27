@@ -1,18 +1,31 @@
 $(function() {
   // START/STOP BUTTON
-  $("#btn-io").click(function(event) {
-    btnName = $(this).html();
+  $(".btn-io").click(function(event) {
+    var btnName = $(this).html();
+    var url = "/update_bot";
+    var io;
 
+    // changes HTML button
     if(btnName === "Start") {
+      io = "off";
       $(this).html("Stop")
              .css("background-color", "red")
              .css("border-color", "red");
     }
     if(btnName === "Stop") {
+      io = "on";
       $(this).html("Start")
              .css("background-color", "#8498A8")
              .css("border-color", "#677f92");
     }
+
+    var data = {
+      "io": io,
+      "controller": "browser"
+    };
+
+    // update @@bot
+    $.post(url, data);
   });
 
   // ARCHIVED VIDEO DROP-DOWN
