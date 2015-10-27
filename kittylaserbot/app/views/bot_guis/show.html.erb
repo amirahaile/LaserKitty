@@ -46,12 +46,12 @@
     <!-- on/off button & drag down -->
     <div class="col-sm-4 text-center controls-center">
       <% if @bot_status == "on" && @bot_controller == "pi" %>
-        <%= link_to "Playing", power_bot_path, class: "btn btn-success btn-io", disabled: "disabled" %>
-      <% elsif @bot_status == "off" %>
-        <%= link_to "Start", power_bot_path, class: "btn btn-success btn-io" %>
+        <%= button_tag "Playing", class: "btn btn-success btn-io", disabled: "disabled" %>
       <% elsif @bot_status == "on" && @bot_controller = "browser" %>
       <!-- and @viewers == 1 -->
-          <%= link_to "Stop", power_bot_path, class: "btn btn-danger btn-io" %>
+        <%= button_tag "Stop", class: "btn btn-danger btn-io" %>
+      <% elsif @bot_status == "off" %>
+        <%= button_tag "Start", class: "btn btn-success btn-io" %>
       <% end %>
 
       <br>
