@@ -1,6 +1,4 @@
 class BotGuisController < ApplicationController
-  before_action :require_login, except: [:prepare]
-
   def find_bot
     Bot.find(session[:bot_id])
   end
