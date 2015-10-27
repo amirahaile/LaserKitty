@@ -26,9 +26,4 @@ class Bot
   def self.controller=(controller)
     $redis.set("controller", controller)
   end
-
-  def self.prepare
-    response = { io: Bot.status, controller: Bot.controller }
-    render json: response.to_json
-  end
 end

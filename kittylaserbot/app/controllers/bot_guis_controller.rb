@@ -11,4 +11,9 @@ class BotGuisController < ApplicationController
 
     redirect_to :show
   end
+
+  def prepare
+    response = { io: Bot.status, controller: Bot.controller }
+    render json: response.to_json
+  end
 end

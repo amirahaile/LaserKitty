@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # for JS to update Bot
   post '/bot_gui',                 to: 'bot_guis#show'
-  post '/update_bot',             to: 'bot_guis#update'
+  post '/update_bot',              to: 'bot_guis#update'
 
   # RaspPi API
   get '/raspi', to: 'bot_guis#prepare'
