@@ -23,6 +23,8 @@ class UsersController < ApplicationController
       render "sessions/request_pending"
     elsif user.invite_status == "rejected"
       render "sessions/request_rejected"
+    elsif user.invite_status == "accepted"
+      render "bot_guis/show"
     else
       redirect_to :back
     end
