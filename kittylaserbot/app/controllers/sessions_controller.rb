@@ -46,6 +46,12 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id # signing into session
         @identity.user = user
 
+        # gives me admin powers
+        # secure bcuz at this point, User obj only has OAuth info
+        if user.email == "amira.dhaile@gmail.com"
+          user.update(invite_status: "accepted")
+        end
+
         msg = "#{provider} account successfully linked! Please finish registering."
         redirect_to new_user_path, notice: msg
         return
