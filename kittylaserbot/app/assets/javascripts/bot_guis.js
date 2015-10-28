@@ -9,7 +9,7 @@ $(function() {
     if(btnName === "Start") { io = "on"; }
     if(btnName === "Stop") { io = "off"; }
 
-    var data = JSON.stringify({ "io": io, "controller": "browser" });
+    var data = JSON.stringify({ "io": io, "commander": "browser" });
 
     // update Bot.instance
     $.post(url, data);
