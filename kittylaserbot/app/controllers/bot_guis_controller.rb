@@ -1,30 +1,21 @@
 class BotGuisController < ApplicationController
-  before_action :require_login
-
-  def find_bot
-    Bot.find(session[:bot_id])
-  end
+  protect_from_forgery :except => :update
 
   def show
-    bot = find_bot
-    @bot_status = bot.io
-    @bot_controller = bot.controller
+    @bot_status = Bot.status
+    @bot_controller = Bot.controller
   end
 
-  def io
-    bot = find_bot
-    if bot.io == "off"
-      bot.update(io: "on", controller: "browser")
-    else
-      bot.update(io: "off", controller: "pi")
-    end
+  def update
+    json = JSON.parse(request.body.read)
+    $redis.set("status", json["io"])
+    $redis.set("controller", json["commander"])
 
-    redirect_to :back
+    redirect_to :show
   end
 
   def prepare
-    bot = Bot.find(session[:bot_id])
-    status = bot.io
-    render json: { io: status }.to_json
+    response = { io: Bot.status, controller: Bot.controller }
+    render json: response.to_json
   end
 end

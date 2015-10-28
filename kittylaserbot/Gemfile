@@ -42,6 +42,11 @@ gem 'passenger', '~> 5.0.20'
 # Styling
 gem 'bootstrap-sass', '~> 3.3.5.1'
 
+# Data Structure Storage
+gem 'redis', '~> 3.2.1'
+gem 'redis-rails', '~> 4.0.0'
+gem 'mock_redis', '~> 0.15.3'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -75,4 +80,7 @@ end
 group :production do
   # Heroku db
   gem 'pg'
+  gem 'rails_12factor'
 end
+
+ruby "2.2.2"

@@ -1,15 +1,27 @@
 $(function() {
   // START/STOP BUTTON
-  $("#btn-io").click(function(event) {
-    btnName = $(this).html();
+  $(".btn-io").click(function(event) {
+    event.preventDefault();
+    var btnName = $(this).html();
+    var url = "/update_bot";
+    var io;
 
+    if(btnName === "Start") { io = "on"; }
+    if(btnName === "Stop") { io = "off"; }
+
+    var data = JSON.stringify({ "io": io, "commander": "browser" });
+
+    // update Bot.instance
+    $.post(url, data);
+
+    // changes HTML button
     if(btnName === "Start") {
-      $(this).html("Stop")
+      $(".btn-io").html("Stop")
              .css("background-color", "red")
              .css("border-color", "red");
     }
     if(btnName === "Stop") {
-      $(this).html("Start")
+      $(".btn-io").html("Start")
              .css("background-color", "#8498A8")
              .css("border-color", "#677f92");
     }

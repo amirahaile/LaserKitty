@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   has_one :bot
 
 # Validations ------------------------------------------------------------------
-  validates :email, presence: true, uniqueness: true
+  # can't validate presence; oauth doesn't require it
+  validates :email, uniqueness: true
 
 # Methods ----------------------------------------------------------------------
   def self.create_from_omniauth(auth_hash)
@@ -18,7 +19,8 @@ class User < ActiveRecord::Base
     # temporary passwords to pass bcrypt's validation
     user.password = "aoijfeoveoinwe3983984upjf393hf83nf"
     user.password_confirmation = "aoijfeoveoinwe3983984upjf393hf83nf"
+    user.save
 
-    return user.save ? user : nil
+    user
   end
 end

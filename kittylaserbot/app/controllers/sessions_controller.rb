@@ -9,53 +9,63 @@ class SessionsController < ApplicationController
     auth = auth_hash
     provider = params[:provider].capitalize
 
-    # find identity
+    # FIND IDENTITY
     @identity = Identity.find_with_omniauth(auth)
+    # no identity was found? create one
+    if @identity.nil? then @identity = Identity.create_with_omniauth(auth) end
 
-    if @identity.nil?
-      # no identity was found; create one
-      @identity = Identity.create_with_omniauth(auth)
-    end
-
-    # takes care of identities & user objects
+    # MANAGES IDENTITIES & USER
     if signed_in?
       if @identity.user == current_user
-        # signed in user tried to link an already linked account
+        # USER IS SIGNED IN & ACCOUNT IS ALREADY LINKED
         msg = "#{provider} account is already linked."
       else
+        # USER IS SIGNED IN & LINKED NEW ACCOUNT
+        @identity.user = current_user
+        @identity.save()
+        msg = "Successfully linked #{provider} account."
+
         # delete associated user if it doesn't have any other identities
         # result of same person creating multiple users
         former_user = @identity.user
         if !former_user.nil? && former_user.identities.length <= 1
           former_user.destroy
         end
-
-        # associate the new identity with signed in user
-        @identity.user = current_user
-        @identity.save()
-        msg = "Successfully linked #{provider} account."
       end
     else
       if @identity.user.present?
-        # identity has an associated user; sign in like normal
-        self.current_user = @identity.user # signing into session
+        # "NORMAL" SIGN IN
+        # identity has an associated user
+        user = @identity.user
+        user.last_login = DateTime.now
+        # signing into session
+        self.current_user = user
+
         msg = ""
       else
-        # no user associated; create a new one
+        # BRAND NEW USER - CREATE USER OBJECT
         user = User.create_from_omniauth(auth)
-        session[:user_id] = user.id # signing into session
-        @identity.user = user
+        @identity.update(user_id: user.id)
+        user.update(last_login: DateTime.now)
+        # signing into session
+        self.current_user = user
 
+        # gives me admin powers
+        # NOTE: secure bcuz at this point, User obj only has OAuth info?
+        if user.email == "amira.dhaile@gmail.com"
+          user.update(invite_status: "accepted")
+        end
+
+        # first user will create Singleton instance of bot
+        # (ewww, necessary global evil. sorry <3jnf)
         msg = "#{provider} account successfully linked! Please finish registering."
         redirect_to new_user_path, notice: msg
         return
       end
     end
 
-    # creats a bot for RaspPi requests
-    bot = Bot.create()
-    bot.user = User.find(session[:user_id])
-    session[:bot_id] = bot.id
+    # first ever user sets initial Redis keys
+    Bot.instantiate
 
     # redirect/render views
     case current_user.invite_status
@@ -71,7 +81,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy # sign out
-    Bot.destroy_all
+    current_user.update(last_logout: DateTime.now)
     self.current_user = nil
     redirect_to root_path
   end

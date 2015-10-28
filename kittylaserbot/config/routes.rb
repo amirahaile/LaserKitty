@@ -3,14 +3,17 @@ Rails.application.routes.draw do
   root 'users#index'
   resources :users, except: [:show]
 
-  # omniauth
+  # OMNIAUTH
   get '/auth/:provider',          to: 'sessions#new',   as: 'auth'
   get '/auth/:provider/callback', to: 'sessions#create'
-  # sessions
+
   get '/logout',                  to: 'sessions#destroy', as: 'logout'
-  # GUI
+
   get '/bot_gui',                 to: 'bot_guis#show',  as: 'bot_gui'
-  get '/power_bot',               to: 'bot_guis#io'
+
+  # for JS to update Bot
+  post '/bot_gui',                 to: 'bot_guis#show'
+  post '/update_bot',              to: 'bot_guis#update'
 
   # RaspPi API
   get '/raspi', to: 'bot_guis#prepare'
