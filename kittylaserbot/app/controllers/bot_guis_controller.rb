@@ -1,4 +1,6 @@
 class BotGuisController < ApplicationController
+  protect_from_forgery :except => :update
+
   def show
     @bot_status = Bot.status
     @bot_controller = Bot.controller
