@@ -7,7 +7,7 @@ class BotGuisController < ApplicationController
   def update
     json = JSON.parse(request.body.read)
     $redis.set("status", json["io"])
-    $redis.set("controller", json["controller"])
+    $redis.set("controller", json["commander"])
 
     redirect_to :show
   end
