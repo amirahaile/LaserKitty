@@ -1,4 +1,4 @@
-#!/user/bin/python
+#!/usr/bin/python2
 
 from Adafruit_PWM_Servo_Driver import PWM
 import RPi.GPIO as GPIO
@@ -19,7 +19,7 @@ GPIO.setmode(GPIO.BOARD)
 # robot starts
 
 # laser turns on
-#GPIO.output(green_LED, True)
+pwm.setPWM(6, 0, 4095)
 
 # take note of time
 current_time = datetime.datetime.now().time()
@@ -59,6 +59,8 @@ while (datetime.datetime.now().time() < end_time):
     time.sleep(1)
 
 # game over - turn off LED
+pwm.setPWM(6, 4096, 0)
+
 #GPIO.output(green_LED, False)
  
  
