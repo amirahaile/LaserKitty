@@ -1,43 +1,95 @@
-#!/user/bin/python
+#!/usr/bin/python3
 
+from subprocess import Popen, PIPE
 import requests
 import datetime
 import time
-import subprocess
+import os
+import signal
 
-response = requests.get('http://kittylaserbot.com/raspi').json()
-print(response)
 
-status = response["io"]
-controller = response["controller"]
-data = { "io" : "off", "commander" : "pi" }
+# VARIABLES
+ustream_process = None
+ustream_starttime = None
 
-# take note of time
-current_time = datetime.datetime.now().time()
-current_hour = current_time.hour
-current_min  = current_time.minute
+# METHODS
+def killProcesses():
+    global ustream_process
+    
+    # kills parent process
+    ustream_process.terminate()
+    # kills child processes
+    os.killpg(ustream_process.pid, signal.SIGKILL)
+    print("Killed it.")
+    print("Is it dead?: %d" % ustream_process.poll())
 
-# create game's end time
-game_time_mins = 5
-end_hour = current_hour
-end_min = current_min + game_time_mins
+def startProcesses():
+    global ustream_process, ustream_starttime
+    
+    ustream_process = Popen(["/home/pi/ustream"], start_new_session=True)
+    # bot script 
+    ustream_starttime = datetime.datetime.now()
+    print("Now streaming!")
+    print(ustream_starttime)
 
-if end_min > 60:
-    end_min -= 60
-    end_hour += 1
+def checkProcesses():
+    global process_running
+    
+    process = Popen(["ps -e | grep avconv"],
+                    stdout=PIPE,
+                    shell=True)
 
-if end_hour > 24:
-    end_hour -= 24
+    output = process.communicate()[0]
+    print("Process: %s" % output)
+    
+    if len(output) > 0:
+        # there is a process running
+        process_running = True
+    else:
+        # there is not a process running
+        process_running = False
 
-end_time = datetime.time(end_hour, end_min)
+    print("Process is running: %s" % process_running)
 
-if status == "on":
-    p = subprocess.call(["~/dev/LaserKitty/pattern1.py"])
 
-    if (datetime.datetime.now().time < end_time):
-        # stop the file
-        p.kill() # didn't work
+# CLEAN PROCESSES
+Popen("sudo killall -9 avconv", shell=True)
+
+
+# POLLING
+while True:
+    
+    #--- CHECK BROWSER
+    response = requests.get('http://kittylaserbot.com/raspi').json()
+    print("JSON response: %s" % response)
+    requested_status = response["io"]
+
+    #--- CHECK PI
+    
+    checkProcesses()
+
+    #--- COMMANDS
             
-    requests.post('http://kittylaserbot.com/update_bot', json=data)
+    if process_running and requested_status == "on":
+        pass
+        # do nothing; unless it's been too long
+        #current_time = datetime.datetime.now()
+        #time_diff = current_time - ustream_starttime
+        #time_diff = time_diff.total_seconds()
+        #print("Time difference (secs): %d" % time_diff)
 
+        #if time_diff >= 300: # 5 min
+         #   killProcesses()
+    
+    elif not process_running and requested_status == "on":
+        startProcesses()
+        
+    elif process_running and requested_status == "off":
+        killProcesses()
+        
+    elif not process_running and requested_status == "off":
+        print("We're doing nothing.")
+        pass # do nothing
+
+    time.sleep(1)
 
