@@ -1,18 +1,17 @@
 #!/usr/bin/python2
 
 from Adafruit_PWM_Servo_Driver import PWM
-import RPi.GPIO as GPIO
 import datetime
 import time
 import random
 
 #--- SETUP
 pwm = PWM(0x40)
-pwm.setPWMFreq(40) # min freq
+pwm.setPWMFreq(50) # min freq = 40
 
-GPIO.setwarnings(False) # comment this out to check
-GPIO.setmode(GPIO.BOARD)
-#green_LED = (pinNum)
+freq = 50 # ranges 40-1000
+pwm.setPWMFreq(freq)
+time_per_tick = (1.0 / freq) / 4096 # servo max tick = 4096
 
 # 3 ways to stop browser play:
 # 1 - manually via browser
@@ -27,32 +26,47 @@ def timeDiff():
     time_diff = time_diff.total_seconds()
     return time_diff
 
+def calcTick(angle):
+    milisec = (angle / 100.0) + 0.6
+    microsec = milisec / 1000
+    tick = microsec / time_per_tick
+    return tick
+
+def randAngle(max_deg):
+    return random.randrange(0, max_deg)
+
 
 #--- PLAY
 
 # laser turns on
 pwm.setPWM(6, 0, 4095)
 
-# bottom servo needs full 180deg range; top is limited
-btm_servo_min_deg = 100
-top_servo_min_deg = 400
-
-btm_servo_max_deg = (600 + 1)
-top_servo_max_deg = (600 + 1)
+# max deg rotation
+btm_servo_max_deg = 150
+# restricted so it won't point off the ground
+top_servo_max_deg = 45
 
 while timeDiff() < game_time:
-    # plays indefinitely
-    # process will be killed by browser or timeout in polly.
-    btm_servo_coord = random.randrange(btm_servo_min_deg, btm_servo_max_deg)
-    top_servo_coord = random.randrange(top_servo_min_deg, top_servo_max_deg)
+    btm_servo_angle = randAngle(btm_servo_max_deg)
+    top_servo_angle = randAngle(top_servo_max_deg)
 
-    pwm.setPWM(0, 0, btm_servo_coord)
-    pwm.setPWM(4, 0, top_servo_coord)
+    print("Bottom: %d" % int(btm_servo_angle))
+    print("Top: %d" % int(top_servo_angle))
+    print(" ")
+    
+    btm_servo_tick = int(calcTick(btm_servo_angle))
+    top_servo_tick = int(calcTick(top_servo_angle))
+
+    pwm.setPWM(0, 0, btm_servo_tick)
+    pwm.setPWM(4, 0, top_servo_tick)
 
     time.sleep(1)
 
-# game over; turn off laser
-pwm.setPWM(6, 4096, 0)
+# game over; turn off laser and reset
+pwm.setPWM(0, 0, 123)
+pwm.setPWM(4, 0, 123)
+pwm.setPWM(6, 0, 0)
+
 
  
  
