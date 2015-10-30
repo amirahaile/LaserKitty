@@ -1,8 +1,14 @@
 #!/usr/bin/python3
 
 from subprocess import Popen, PIPE
+import crontab import CronTab 
 
-# METHODS
+url = 'http://kittylaserbot.com/update_bot'
+
+# beginnings of updating schedule from the browser
+#pi_cron = CronTab(user='pi')[0]
+
+# METHOD
 def processRunning():    
     process = Popen(["ps -e | grep avconv"],
                     stdout=PIPE,
@@ -19,10 +25,11 @@ def processRunning():
 
 
 # COMMANDS
-
 if processRunning():
-    # skip this run
-    pass
+    # skip this run; send schedule info
+    schedule = { 'io': 'on', 'commander': 'browser' }
+    requests.post(url, json=schedule)
+    
 else:
     # execute bot script
     bot_process = Popen(["/home/pi/dev/LaserKitty/cron_play.py"],
@@ -30,7 +37,9 @@ else:
 
     # update browser status
     data = { 'io': 'on', 'commander': 'pi' }
-    requests.post('http://kittylaserbot.com/update_bot', json=data)
+    requests.post(url, json=data)
+
+
 
 
 
