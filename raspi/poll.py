@@ -27,11 +27,9 @@ def killProcesses():
 
 def startProcesses():
     global ustream_process, ustream_starttime, bot_play_process
-    ustream_path = "/home/pi/ustream"
-    browser_play_path = "/home/pi/dev/LaserKitty/browser_play.py"
     
-    ustream_process = Popen([ustream_path], start_new_session=True)
-    bot_play_process = Popen([browser_play_path], start_new_session=True)
+    ustream_process = Popen(["/home/pi/ustream"], start_new_session=True)
+    bot_play_process = Popen(["/home/pi/dev/LaserKitty/browser_play.py"], start_new_session=True)
     ustream_starttime = datetime.datetime.now()
     print("Now streaming!")
     print(ustream_starttime)
