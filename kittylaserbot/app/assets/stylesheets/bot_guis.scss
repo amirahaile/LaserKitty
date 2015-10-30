@@ -5,6 +5,10 @@
 $fat-font: 'Days One', sans-serif;
 $bkgd-color: #C2E7DA;
 
+nav+div.container-fluid {
+  height: 90%;
+}
+
 // VIDEO
 .bot-container {
   position: relative;
