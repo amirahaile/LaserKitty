@@ -1,5 +1,5 @@
 var assert  = require('assert'),
-    bot     = require('../modules/bot');
+    bot     = require('../../modules/bot');
 
 describe('Bot Module', function(){
 
