@@ -14,55 +14,60 @@ describe('Bot Module', function(){
   describe('Controller Property', function(){
     it('exists and is set to the default value', function(done){
       assert.notEqual(typeof bot.controller, "undefined");
-      assert.equal(bot.controller, 'RaspPi');
+      assert.equal(bot.controller, 'raspPi');
       done();
     });
   });
 
-  describe('updateBotStatus()', function(){
+  describe('update()', function(){
     var power = 'on',
         controller = 'manual';
 
     it('always takes two parameters', function(done){
-      assert.throws(bot.updateBotStatus, 'Error: Two parameters are required.');
-      assert.throws(function(){ bot.updateBotStatus(power); }, 'Error: Two parameters are required.');
-      assert.doesNotThrow(function(){ bot.updateBotStatus(power, controller); });
+      assert.throws(bot.update, 'Error: Two parameters are required.');
+      assert.throws(function(){ bot.update(power); }, 'Error: Two parameters are required.');
+      assert.doesNotThrow(function(){ bot.update(power, controller); });
       done();
     });
 
     it('only accepts \'on\' or \'off\' as the first param', function(done){
-      var badPower = 'bazooga',
-          offPower = 'off';
-
-      assert.throws(function(){ bot.updateBotStatus(badPower, controller); }, 'Error: Invalid power parameter.');
-      assert.doesNotThrow(function(){ bot.updateBotStatus(power, controller); });
-      assert.doesNotThrow(function(){ bot.updateBotStatus(offPower, controller); });
+      assert.throws(function(){ bot.update('bazooga', controller); }, 'Error: Invalid power parameter.');
+      assert.doesNotThrow(function(){ bot.update('on', controller); });
+      assert.doesNotThrow(function(){ bot.update('off', controller); });
       done();
     });
 
-    it('only accepts \'RaspPi\' or \'manual\' as the second param', function(done){
-      var badController = 'bazing',
-          piController = 'RaspPi';
-
-      assert.throws(function(){ bot.updateBotStatus(power, badController); }, 'Error: Invalid controller parameter.');
-      assert.doesNotThrow(function(){ bot.updateBotStatus(power, controller); });
-      assert.doesNotThrow(function(){ bot.updateBotStatus(power, piController); });
+    it('only accepts \'raspPi\' or \'manual\' as the second param', function(done){
+      assert.throws(function(){ bot.update(power, 'bazing'); }, 'Error: Invalid controller parameter.');
+      assert.doesNotThrow(function(){ bot.update(power, 'raspPi'); });
+      assert.doesNotThrow(function(){ bot.update(power, 'manual'); });
       done();
     });
 
     it('switches the bot\'s status between \'on\' and \'off\'', function(done){
-      bot.updateBotStatus(power, controller);
+      bot.update('on', controller);
 
       assert.notEqual(bot.power, 'off', 'The bot is no longer \'off\'.');
       assert.equal(bot.power, 'on', 'The bot is now \'on\'.');
+
+      bot.update('off', controller);
+
+      assert.notEqual(bot.power, 'on', 'The bot is no longer \'on\'.');
+      assert.equal(bot.power, 'off', 'The bot is now \'off\'.');
+
       done();
     });
 
     it('switches the bot\'s controller between \'raspPi\' and \'manual\'', function(done){
-      bot.updateBotStatus(power, controller);
+      bot.update(power, 'manual');
 
-      assert.notEqual(bot.controller, 'raspPi', 'The bot is no longer controller by the RaspPi.');
-      assert.equal(bot.controller, 'manual', 'The bot is being controlled manually.');
+      assert.notEqual(bot.controller, 'raspPi', 'The bot is no longer \'raspPi\'.');
+      assert.equal(bot.controller, 'manual', 'The bot is now \'manual\'.');
+
+      bot.update(power, 'raspPi');
+
+      assert.notEqual(bot.controller, 'manual', 'The bot is no longer \'manual\'.');
+      assert.equal(bot.controller, 'raspPi', 'The bot is now \'raspPi\'.');
       done();
     });
   });
