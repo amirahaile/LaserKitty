@@ -5,9 +5,9 @@
 
     power: 'off',
 
-    controller: 'RaspPi',
+    controller: 'raspPi',
 
-    updateBotStatus: function updateBotStatus(power, controller){
+    update: function update(power, controller){
       var validPower, validController;
 
       if(power == "off" || power == "on"){
@@ -16,7 +16,7 @@
         throw new Error('Invalid power parameter.');
       }
 
-      if(controller == "RaspPi" || controller == "manual"){
+      if(controller == "raspPi" || controller == "manual"){
         validController = true;
       } else {
         throw new Error('Invalid controller parameter.');
