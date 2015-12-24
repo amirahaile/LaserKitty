@@ -7,6 +7,15 @@
 
     controller: 'raspPi',
 
+    report: function report(){
+      var status = {
+        "power": this.power,
+        "controller": this.controller
+      };
+
+      return status;
+    },
+
     update: function update(power, controller){
       var validPower, validController;
 
