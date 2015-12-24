@@ -22,11 +22,9 @@
         throw new Error('Invalid controller parameter.');
       }
 
-      if (validPower && validController) {
+      if (validPower || validController) {
         this.power = power;
         this.controller = controller;
-      } else {
-        throw new Error('Two parameters are required.');
       }
     }
   };
