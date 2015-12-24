@@ -15,7 +15,8 @@ describe('GUI Controller', function(){
     // });
   });
 
-  // this request is only ever made by the RaspPi; a view is unnecessary
+  // this request is only ever made by the RaspPi
+  // a view is unnecessary
   describe('GET /bot_status', function(){
     var getBotStatus = request(app).get('/bot_status').set('Accept', 'application/json');
 
@@ -41,7 +42,7 @@ describe('GUI Controller', function(){
     it('accepts JSON', function(done){
       postBotStatus
         .send('{"power": "off", "controller": "manual"}')
-        .end(callback);
+        .end(function(error, result){});
     });
 
     it('updates the bot\'s status according to the received JSON', function(done){
@@ -49,7 +50,7 @@ describe('GUI Controller', function(){
 
       postBotStatus
         .send('{"power": "on", "controller": "manual"}')
-        .end(callback);
+        .end(function(error, result){});
 
       var newBotStatus = bot.report();
 
