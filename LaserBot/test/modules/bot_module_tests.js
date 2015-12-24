@@ -4,16 +4,24 @@ var assert  = require('assert'),
 describe('Bot Module', function(){
 
   describe('Power Property', function(){
-    it('exists and is set to the default value', function(done){
+    it('exists', function(done){
       assert.notEqual(typeof bot.power, "undefined");
+      done();
+    });
+
+    it('is set to the default value', function(done){
       assert.equal(bot.power, 'off');
       done();
     });
   });
 
   describe('Controller Property', function(){
-    it('exists and is set to the default value', function(done){
+    it('exists', function(done){
       assert.notEqual(typeof bot.controller, "undefined");
+      done();
+    });
+
+    it('is set to the default value', function(done){
       assert.equal(bot.controller, 'raspPi');
       done();
     });
@@ -22,13 +30,6 @@ describe('Bot Module', function(){
   describe('update()', function(){
     var power = 'on',
         controller = 'manual';
-
-    it('always takes two parameters', function(done){
-      assert.throws(bot.update, 'Error: Two parameters are required.');
-      assert.throws(function(){ bot.update(power); }, 'Error: Two parameters are required.');
-      assert.doesNotThrow(function(){ bot.update(power, controller); });
-      done();
-    });
 
     it('only accepts \'on\' or \'off\' as the first param', function(done){
       assert.throws(function(){ bot.update('bazooga', controller); }, 'Error: Invalid power parameter.');
@@ -54,7 +55,6 @@ describe('Bot Module', function(){
 
       assert.notEqual(bot.power, 'on', 'The bot is no longer \'on\'.');
       assert.equal(bot.power, 'off', 'The bot is now \'off\'.');
-
       done();
     });
 
