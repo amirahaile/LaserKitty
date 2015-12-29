@@ -1,7 +1,7 @@
 var assert  = require('assert'),
-    bot     = require('../../modules/bot');
+    bot     = require('../../models/bot');
 
-describe('Bot Module', function(){
+describe('Bot Model', function(){
 
   describe('Power Property', function(){
     it('exists', function(done){

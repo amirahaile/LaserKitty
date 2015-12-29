@@ -1,7 +1,7 @@
 (function(){
   "use strict";
 
-  var botModule = {
+  var botModel = {
 
     power: 'off',
 
@@ -38,5 +38,5 @@
     }
   };
 
-  module.exports = botModule;
+  module.exports = botModel;
 }());
