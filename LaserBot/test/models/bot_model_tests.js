@@ -26,19 +26,20 @@ describe('Bot Model', function(){
   });
 
   describe('report()', function(){
-    var botReport = bot.report();
+    var botReport;
 
-    it('returns a hash', function(){
+    beforeEach(function(){
+      botReport = bot.report();
+    });
+
+    it('returns an object', function(){
       assert.equal(typeof botReport, "object");
       assert.equal(Object.keys(botReport).length, 2);
     });
 
     it('relays the bot\'s current status', function(){
-      var botPower = bot.power;
-      var botController = bot.controller;
-
-      assert.equal(botReport.power, botPower);
-      assert.equal(botReport.controller, botController);
+      assert.equal(botReport.power, bot.power);
+      assert.equal(botReport.controller, bot.controller);
     });
   });
 
