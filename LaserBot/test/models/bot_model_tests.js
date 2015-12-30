@@ -4,26 +4,24 @@ var assert  = require('assert'),
 describe('Bot Model', function(){
 
   describe('Power Property', function(){
-    it('exists', function(done){
+    it('exists', function(){
       assert.notEqual(typeof bot.power, "undefined");
-      done();
     });
 
-    it('is set to the default value', function(done){
-      assert.equal(bot.power, 'off');
-      done();
+    it('is set to either \'on\' or \'off\'', function(){
+      var properPropValue = (bot.power == "on" || bot.power == "off") ? true : false;
+      assert.equal(properPropValue, true);
     });
   });
 
   describe('Controller Property', function(){
-    it('exists', function(done){
+    it('exists', function(){
       assert.notEqual(typeof bot.controller, "undefined");
-      done();
     });
 
-    it('is set to the default value', function(done){
-      assert.equal(bot.controller, 'raspPi');
-      done();
+    it('is set to either \'raspPi\' or \'manual\'', function(){
+      var properPropValue = (bot.controller == "raspPi" || bot.controller == "manual") ? true : false;
+      assert.equal(properPropValue, true);
     });
   });
 

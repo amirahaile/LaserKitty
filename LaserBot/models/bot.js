@@ -4,7 +4,6 @@
   var botModel = {
 
     power: 'off',
-
     controller: 'raspPi',
 
     report: function report(){
