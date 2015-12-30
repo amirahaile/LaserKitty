@@ -1,4 +1,4 @@
-var gui     = require('../controllers/gui'),
+var gui     = require('../../controllers/gui'),
     assert  = require('assert');
 
 describe('GUI Controller', function(){

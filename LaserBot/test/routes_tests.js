@@ -1,7 +1,7 @@
 var request = require('supertest'),
     express = require('express'),
-    bot     = require('../../modules/bot'),
-    routes  = require('../../routes'),
+    bot     = require('../models/bot'),
+    routes  = require('../routes'),
     assert  = require('assert');
 
 describe('GUI Routes', function(){
