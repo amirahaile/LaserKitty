@@ -4,7 +4,7 @@ var request = require('supertest'),
     routes  = require('../routes'),
     assert  = require('assert');
 
-describe('GUI Routes', function(){
+describe('Routes', function(){
   var app = express();
 
   describe('GET /gui', function(){
