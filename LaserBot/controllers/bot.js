@@ -6,17 +6,20 @@
 
     // NOTE: is `function(request, callback)` necessary?
     // NOTE: how is error handling happening here?
-    
-    botReport: function(){
-      var report = bot.report();
-      return report;
+
+    botReport: function(request, callback){
+      bot.report(request, function(result){
+        callback(result);
+      });
     },
 
     updateBot: function(request, callback){
-      var power = request.power;
-      var controller = request.controller;
+      var power = request.body.power;
+      var controller = request.body.controller;
 
-      bot.update(power, controller);
+      bot.update(power, controller, function(error, success){
+        callback(error, success);
+      });
     }
   };
 

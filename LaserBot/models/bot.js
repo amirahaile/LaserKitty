@@ -6,34 +6,39 @@
     power: 'off',
     controller: 'raspPi',
 
-    report: function report(){
+    report: function(request, callback){
       var status = {
         "power": this.power,
         "controller": this.controller
       };
 
-      return status;
+      callback(status);
     },
 
-    update: function update(power, controller){
-      var validPower, validController;
+    update: function(power, controller, callback){
+      var validPower, validController,
+          success = false,
+          error = [];
 
       if(power == "off" || power == "on"){
         validPower = true;
       } else {
-        throw new Error('Invalid power parameter.');
+        error.push(new Error('Invalid power parameter.'));
       }
 
       if(controller == "raspPi" || controller == "manual"){
         validController = true;
       } else {
-        throw new Error('Invalid controller parameter.');
+        error.push(new Error('Invalid controller parameter.'));
       }
 
-      if (validPower || validController) {
+      if(validPower && validController) {
         this.power = power;
         this.controller = controller;
+        success = true;
       }
+
+      callback(error, success);
     }
   };
 
