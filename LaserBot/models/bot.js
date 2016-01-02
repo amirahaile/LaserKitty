@@ -6,16 +6,16 @@
     power: 'off',
     controller: 'raspPi',
 
-    report: function(request, callback){
+    report: function report(){
       var status = {
         "power": this.power,
         "controller": this.controller
       };
 
-      callback(status);
+      return status;
     },
 
-    update: function(power, controller, callback){
+    update: function update(power, controller, callback){
       var validPower, validController,
           success = false,
           error = [];

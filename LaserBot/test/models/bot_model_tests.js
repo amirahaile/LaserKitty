@@ -28,8 +28,13 @@ describe('Bot Model', function(){
   describe('report()', function(){
     var botReport;
 
-    beforeEach(function(){
+    beforeEach(function(done){
       botReport = bot.report();
+      done();
+    });
+
+    it('is a function', function(){
+      assert.equal(typeof bot.report, "function");
     });
 
     it('returns an object', function(){
@@ -46,6 +51,10 @@ describe('Bot Model', function(){
   describe('update()', function(){
     var power = 'on',
         controller = 'manual';
+
+    it('is a function', function(){
+      assert.equal(typeof bot.update(), "function");
+    });
 
     it('only accepts \'on\' or \'off\' as the first param', function(done){
       assert.throws(function(){ bot.update('bazooga', controller); }, 'Error: Invalid power parameter.');
