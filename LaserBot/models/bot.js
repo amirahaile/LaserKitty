@@ -16,23 +16,24 @@
     },
 
     update: function update(power, controller, callback){
-      var validPower, validController,
-          success = false,
-          error = [];
+      var validPower,
+          validController,
+          error = null,
+          success = false;
 
-      if(power == "off" || power == "on"){
+      if (power == "off" || power == "on"){
         validPower = true;
       } else {
-        error.push(new Error('Invalid power parameter.'));
+        error = new Error('Invalid power parameter.');
       }
 
-      if(controller == "raspPi" || controller == "manual"){
+      if (controller == "raspPi" || controller == "manual"){
         validController = true;
       } else {
-        error.push(new Error('Invalid controller parameter.'));
+        error = new Error('Invalid controller parameter.');
       }
 
-      if(validPower && validController) {
+      if (validPower && validController){
         this.power = power;
         this.controller = controller;
         success = true;
