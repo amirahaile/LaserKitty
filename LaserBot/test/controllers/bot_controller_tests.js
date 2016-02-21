@@ -7,7 +7,7 @@ describe('Bot Controller', function(){
   describe('botReport Property', function(){
 
     it('prepares the bot\'s status', function(){
-      var report = botModel.report();
+      var report = botModel.report;
 
       botController.botReport(function(error, result){
         for(var property in report){
@@ -32,23 +32,22 @@ describe('Bot Controller', function(){
 
     it('updates the bot', function(){
       var report = botModel.report();
-      var request = {
+      var request = JSON.stringify({
         "power": "on",
         "controller": "manual"
-      };
+      });
 
-      botController.updateBot(request);
+      botController.updateBot(request, function(error, success){
+        if (error){ throw(error); }
+      });
 
       var newReport = botModel.report();
 
       assert.notEqual(report.power, newReport.power);
       assert.equal(newReport.power, 'on');
+
       assert.notEqual(report.controller, newReport.controller);
       assert.equal(newReport.controller, 'manual');
     });
-
-    // it('renders the GUI view', function(){
-    //
-    // });
   });
 });
